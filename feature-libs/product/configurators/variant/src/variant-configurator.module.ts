@@ -3,11 +3,11 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { Config, I18nModule, UrlModule } from '@spartacus/core';
+import { MessageConfig } from '@spartacus/product/configurators/common';
 import {
   GenericConfiguratorModule,
   IconModule,
   KeyboardFocusModule,
-  MessageConfig,
   SpinnerModule,
 } from '@spartacus/storefront';
 import { InteractiveConfigurationModule } from './interactive-configuration.module';

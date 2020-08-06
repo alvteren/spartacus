@@ -6,10 +6,10 @@ import {
   ConfigAddToCartButtonComponent,
   ConfigGroupMenuComponent,
   ConfigurationMessageLoaderModule,
+  DefaultMessageConfig,
 } from '@spartacus/product/configurators/common';
 import {
   CmsPageGuard,
-  DefaultMessageConfig,
   HamburgerMenuModule,
   PageLayoutComponent,
 } from '@spartacus/storefront';

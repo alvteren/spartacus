@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {
   Configurator,
@@ -12,7 +13,10 @@ import { map, take } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class ConfigUtilsService {
-  constructor(protected configuratorGroupsService: ConfiguratorGroupsService) {}
+  constructor(
+    protected configuratorGroupsService: ConfiguratorGroupsService,
+    @Inject(PLATFORM_ID) protected platformId: any
+  ) {}
 
   /**
    * Does the configuration belong to a cart entry, or has the group been visited already?
@@ -52,5 +56,17 @@ export class ConfigUtilsService {
       localAssembledValues.push(localAttributeValue);
     }
     return localAssembledValues;
+  }
+
+  scrollToConfigurationElement(selectors: string): void {
+    if (isPlatformBrowser(this.platformId)) {
+      // we don't want to run this logic when doing SSR
+      const theElement = document.querySelector(selectors);
+      let topOffset = 0;
+      if (theElement instanceof HTMLElement) {
+        topOffset = theElement.offsetTop;
+      }
+      window.scroll(0, topOffset);
+    }
   }
 }

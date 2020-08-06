@@ -5,12 +5,10 @@ import {
   ConfiguratorGroupsService,
   GenericConfigurator,
 } from '@spartacus/core';
-import {
-  ConfigRouterExtractorService,
-  ConfigUtilsService,
-} from '@spartacus/storefront';
+import { ConfigRouterExtractorService } from '@spartacus/storefront';
 import { Observable } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
+import { ConfigUtilsService } from './../service/config-utils.service';
 
 @Component({
   selector: 'cx-config-previous-next-buttons',
