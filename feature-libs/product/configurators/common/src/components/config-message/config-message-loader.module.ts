@@ -5,15 +5,22 @@ import {
   ComponentFactoryResolver,
   NgModule,
 } from '@angular/core';
+import { Config, ConfigModule } from '@spartacus/core';
 import {
   OutletPosition,
   OutletService,
   PageComponentModule,
 } from '@spartacus/storefront';
+import { DefaultMessageConfig } from '../config/default-message-config';
+import { MessageConfig } from '../config/message-config';
 import { ConfigMessageComponent } from './config-message.component';
 
 @NgModule({
-  imports: [CommonModule, PageComponentModule],
+  imports: [
+    CommonModule,
+    PageComponentModule,
+    ConfigModule.withConfig(DefaultMessageConfig),
+  ],
   providers: [
     {
       provide: APP_INITIALIZER,
@@ -21,6 +28,7 @@ import { ConfigMessageComponent } from './config-message.component';
       deps: [ComponentFactoryResolver, OutletService],
       multi: true,
     },
+    { provide: MessageConfig, useExisting: Config },
   ],
 })
 export class ConfigurationMessageLoaderModule {}

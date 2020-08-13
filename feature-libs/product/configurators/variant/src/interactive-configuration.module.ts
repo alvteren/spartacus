@@ -6,7 +6,6 @@ import {
   ConfigAddToCartButtonComponent,
   ConfigGroupMenuComponent,
   ConfigurationMessageLoaderModule,
-  DefaultMessageConfig,
 } from '@spartacus/product/configurators/common';
 import {
   CmsPageGuard,
@@ -31,7 +30,6 @@ import {
         canActivate: [CmsPageGuard],
       },
     ]),
-    ConfigModule.withConfig(DefaultMessageConfig),
     ConfigModule.withConfig(<CmsConfig>{
       cmsComponents: {
         VariantConfigurationMenu: {
