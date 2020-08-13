@@ -34,26 +34,29 @@ export class ConfigPreviousNextButtonsComponent {
   ) {}
 
   onPrevious(configuration: Configurator.Configuration): void {
-    this.configUtils.scrollToConfigurationElement(
-      '.VariantConfigurationTemplate'
-    );
     this.configuratorGroupsService
       .getPreviousGroupId(configuration.owner)
       .pipe(take(1))
       .subscribe((groupId) =>
         this.configuratorGroupsService.navigateToGroup(configuration, groupId)
       );
-  }
-  onNext(configuration: Configurator.Configuration): void {
+
     this.configUtils.scrollToConfigurationElement(
       '.VariantConfigurationTemplate'
     );
+  }
+
+  onNext(configuration: Configurator.Configuration): void {
     this.configuratorGroupsService
       .getNextGroupId(configuration.owner)
       .pipe(take(1))
       .subscribe((groupId) =>
         this.configuratorGroupsService.navigateToGroup(configuration, groupId)
       );
+
+    this.configUtils.scrollToConfigurationElement(
+      '.VariantConfigurationTemplate'
+    );
   }
 
   isFirstGroup(owner: GenericConfigurator.Owner): Observable<boolean> {
